@@ -1,0 +1,117 @@
+@import './colors.scss';
+.Search-Box {
+    top: 100vh;
+    background-color: $white-color;
+    input {
+        border: 2px solid $secondary-color;
+        color: $primary-color;
+        text-transform: capitalize;
+        border-radius: 15px 15px 0 0;
+    }
+    .suggestions {
+        z-index: 999;
+        position: absolute;
+        background-color:$white-color;
+        height: fit-content;
+        border-radius: 0 0 15px 15px;
+        max-height: 100vh;
+        li {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $primary-color;
+        }
+        & :last-child {
+            border-radius: 0 0 15px 15px;
+        }
+    }
+}
+@media only screen and (min-width: 1301px) {
+    .Search-Box {
+        height: 120px;
+        padding-top: 25px;
+        input {
+            grid-column: 1/6;
+            height: 70px;
+            padding-left: 20px;
+        }
+        .suggestions {
+            width: 530px;
+            top: 95px;
+            li {
+                height: 40px;
+            }
+        }
+        button {
+            grid-column:8/13;
+            height: 70px;
+        }
+    }
+}
+@media only screen and (max-width: 1300px) {
+    .Search-Box {
+        height: 120px;
+        padding-top: 25px;
+        input {
+            grid-column: 1/6;
+            height: 70px;
+            padding-left: 20px;
+        }
+        .suggestions {
+            width: 480px;
+            top: 95px;
+            li {
+                height: 40px;
+            }
+        }
+        button {
+            grid-column:8/13;
+            height: 70px;
+        }
+    }
+}
+@media only screen and (max-width: 1180px) {
+    .Search-Box {
+        height: 110px;
+        padding-top: 25px;
+        input {
+            grid-column: 1/6;
+            height: 60px;
+            padding-left: 20px;
+        }
+        .suggestions {
+            width: 405px;
+            top: 80px;
+            li {
+                height: 40px;
+            }
+        }
+        button {
+            grid-column:8/13;
+            height: 60px;
+        }
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .Search-Box {
+        height: 100px;
+        padding-top: 25px;
+        input {
+            grid-column: 1/5;
+            height: 50px;
+            padding-left: 20px;
+        }
+        .suggestions {
+            width: 190px;
+            top: 70px;
+            li {
+                height: 40px;
+            }
+        }
+        button {
+            grid-column:5/7;
+            height: 50px;
+        }
+    }
+}

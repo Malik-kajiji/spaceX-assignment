@@ -1,0 +1,58 @@
+@import './colors.scss';
+.cards {
+    position: relative;
+    top: 100vh;
+    background-color: $BG-color;
+    min-height: 100vh;
+    width: 100%;
+    .cards-holder {
+        min-height: 100vh;
+        margin-inline: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .loading,
+    .err {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+    }
+    .loading {
+        color: #00b894;
+    }
+    .err {
+        color: #d63031;
+    }
+}
+@media only screen and (min-width: 1301px) {
+    .cards {
+        .cards-holder {
+            width: 1300px;
+        }
+    }
+}
+@media only screen and (max-width: 1300px) {
+    .cards {
+        .cards-holder {
+            width: 1180px;
+        }
+    }
+}
+@media only screen and (max-width: 1180px) {
+    .cards {
+        .cards-holder {
+            width: 1000px;
+        }
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .cards {
+        .cards-holder {
+            width: 290px;
+        }
+    }
+}
