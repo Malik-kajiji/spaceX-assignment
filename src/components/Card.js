@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { PopUpData } from '../context/PopUpContext';
 import '../styles/card.scss';
 const Card = (props) => {
+    const {setActive,setInfo,setName,setStatusColor,setStatus,setSerial} = PopUpData()
     const {AllInfo,chosenWord}=props;
     const singularWord =  chosenWord.slice(0,chosenWord.length-1)
     const serial = AllInfo[`${singularWord}_serial`]
-    const [active,setActive]=useState(false)
-    function handleClick(){
-        setActive(prev=>!prev)
-    }
+    const Status = AllInfo.status || AllInfo.name || AllInfo.title || AllInfo[`${singularWord}_name`] || AllInfo[`${singularWord}_type`];
+    const name = serial || AllInfo.id || AllInfo[`${singularWord}_id`]
     let statusColor;
     if(AllInfo.status === 'active'){
         statusColor='green'
@@ -16,19 +16,21 @@ const Card = (props) => {
     }else {
         statusColor='grey'
     }
+
+    function handleClick(){
+        setActive(true)
+        setInfo(AllInfo)
+        setName(name)
+        setStatusColor(statusColor)
+        setStatus(Status)
+        setSerial(serial)
+    }
     return ( 
         <>
             <article className='card'>
-                <h2 className='TXT-heading name'>{serial || AllInfo.id || AllInfo[`${singularWord}_id`]}</h2>
-                <p className={`TXT-heading status ${statusColor}`}>{AllInfo.status || AllInfo.name || AllInfo.title || AllInfo[`${singularWord}_name`] || AllInfo[`${singularWord}_type`]}</p>
-                <button className='BTN' onClick={handleClick}>show {active?'less':'more'}</button>
-            </article>
-            <article className={`AllInfo ${ active ? 'active':''}`}>
-                <p className='TXT-normal'>original launch: {AllInfo.original_launch}</p>
-                <p className='TXT-normal'>details : {AllInfo.details}</p>
-                <p className='TXT-normal'>reuse count: {AllInfo.reuse_count}</p>
-                <p className='TXT-normal'>landings: {AllInfo.landings}</p>
-                <img className='image' src={AllInfo.image} alt="" />
+                <h2 className='TXT-heading name'>{name}</h2>
+                <p className={`TXT-heading status ${statusColor}`}>{Status}</p>
+                <button className='BTN' onClick={handleClick}>show more</button>
             </article>
         </>
     );
